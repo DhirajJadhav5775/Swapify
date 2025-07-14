@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: rgb(249, 248, 248);
+    font-family: 'Poppins',sans-serif;
+}
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+.btn-custom {
+    width: 200px;
+    font-size: 18px;
+}
+
+.navbar-nav .nav-link {
+    color: white;  /* Color when hovered */
+}
+.carousel-inner
+{
+    margin-left: 100px;    
+    padding-right: 200px;
+} 
+.carousel-inner img {
+    height: 300px;  /* Adjust height as needed */
+    object-fit: cover; /* Ensures the image maintains aspect ratio */
+}
+.slogan{
+    margin-left: 580px;
+    margin-top: 30px;
+    font-style: italic;
+}
+#sloganBold{
+    font-weight: bolder;
+}
+/* .steps{
+    text-align: center;
+    padding: 40px;
+    background-color:  rgb(250, 250, 245);
+    width: 900px;
+    margin-left: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+} */
+#First{
+    font-size: 35px;
+}
+#Second{
+    font-size: 20px;
+}
+#login{
+    margin-left: 25px;
+}
+.faqs{
+    width: 85%;
+    border: 1px solid black;
+    margin-left: 120px;
+    text-align: center;
+    margin-top: 50px;
+    background-color: rgb(250, 250, 245);
+}
+/* .containerF
+{
+    max-width: 1170px;
+    margin: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+ul{
+    list-style: none;
+}
+.footer{
+    background-color: beige;
+    padding: 70px 0;
+    margin: 50px;
+}
+.footer-col{
+    width: 25%;
+    padding: 0 15px;
+}
+ */
+ .containerF {
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer {
+    padding: 15px 0;
+    margin: 100px 0 0; /* Adjusted margin */
+}
+
+.footer-col {
+    width: 30%; /* Adjusted for better alignment */
+    padding: 0 15px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-left : 50px;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #007bff; /* Blue hover effect */
+}
+.whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }

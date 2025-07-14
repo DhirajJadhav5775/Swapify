@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy Gift Cards | Swapify</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="icon" href="/images/s.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+            overflow-x: hidden;
+        }
+        body {
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+        .gift-card {
+            transition: transform 0.3s ease-in-out;
+            margin-bottom: 45px;
+        }
+        .gift-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="homepage.html">Swapify</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+<!--                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>-->
+                <li class="nav-item"><a class="nav-link" href="../templates/account.html">Account</a>></li>
+                <li class="nav-item"><a class="nav-link" href="sellgift.html">Sell Gift Cards</a></li>
+                <li class="nav-item"><a class="nav-link" href="addtocart.html">Cart</a></li>
+                <li class="nav-item"><a class="nav-link" href="loginhomepage.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">Logout</a>></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="container text-center my-4" ><br><br><br>
+    <h2 class="fw-bold text-dark">Buy Gift Cards</h2>
+    <p class="text-secondary">Find the best deals on gift cards and save money!</p>
+
+    <!-- Search Bar -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Search gift cards..." aria-label="Search">
+        </div>
+    </div>
+</div>
+
+<!-- Gift Cards Grid -->
+<div class="container">
+    <div class="row g-4">
+        <!-- Sample Gift Card 1 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="https://m.media-amazon.com/images/I/71q0vqiv7bL._AC_UL480_FMwebp_QL65_.jpg" class="card-img-top" alt="Amazon Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Amazon Gift Card</h5>
+                    <p class="text-primary fw-bold">$50</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Gift Card 2 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="googleplay-card.png" class="card-img-top" alt="Google Play Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Google Play Card</h5>
+                    <p class="text-primary fw-bold">$25</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Gift Card 3 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="netflix-card.png" class="card-img-top" alt="Netflix Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Netflix Gift Card</h5>
+                    <p class="text-primary fw-bold">$30</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Gift Card 4 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sample Gift Card 5 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sample Gift Card 6 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sample Gift Card 7 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sample Gift Card 8 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sample Gift Card 9 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sample Gift Card 10 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sample Gift Card 11 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Sample Gift Card 12 -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm gift-card">
+                <img src="steam-card.png" class="card-img-top" alt="Steam Gift Card">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">Steam Gift Card</h5>
+                    <p class="text-primary fw-bold">$40</p>
+                    <button class="btn btn-success w-100 mb-2" onclick="window.location.href='cart.html'">Add to Cart</button>
+                    <button class="btn btn-danger w-100">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer style="background-color: beige; padding: 50px 0; margin: 50px 0 0; font-family: 'Poppins', sans-serif;">
+    <div style="max-width: 1170px; margin: auto;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div style="width: 30%; padding: 0 15px;">
+                <h4 style="font-size: 20px; font-weight: 600; margin-bottom: 15px; color: #222;">Home</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">
+                        <a href="#" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">Login</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="#" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">FAQ'S</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="#" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">Blog</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="width: 30%; padding: 0 15px;">
+                <h4 style="font-size: 20px; font-weight: 600; margin-bottom: 15px; color: #222;">Get Help</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">
+                        <a href="#" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">About Us</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="#" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">Contact Us</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="#" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="width: 30%; padding: 0 15px;">
+                <h4 style="font-size: 20px; font-weight: 600; margin-bottom: 15px; color: #222;">Support</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">
+                        <a href="tc.html" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">Terms and Conditions</a>
+                    </li>
+                    <!-- <li style="margin-bottom: 10px;">
+                        <a href="#" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">How to Buy Gift Cards</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="#" style="text-decoration: none; color: #555; font-size: 16px; font-weight: 400; transition: 0.3s;">How to Sell Gift Cards</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

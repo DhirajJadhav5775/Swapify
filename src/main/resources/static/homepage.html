@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Swapify lets you buy, sell, and exchange gift cards quickly and securely.">
+    <meta name="keywords" content="gift cards, buy gift cards, sell gift cards, exchange gift vouchers">
+    <title>Swapify - Gift Card Exchange</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="/images/s.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+
+    <script>
+        window.onload = function() {
+          // Check if cookie is set
+          const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
+            const [name, value] = cookie.trim().split("=");
+            acc[name] = value;
+            return acc;
+          }, {});
+
+        const isLoggedIn = cookies["isLoggedIn"] === "true";
+
+    document.getElementById("login-link").style.display = isLoggedIn ? "none" : "inline-block";
+    document.getElementById("register-link").style.display = isLoggedIn ? "none" : "inline-block";
+    document.getElementById("cart-link").style.display = isLoggedIn ? "inline-block" : "none";
+    document.getElementById("account-link").style.display = isLoggedIn ? "inline-block" : "none";
+    document.getElementById("logout-link").style.display = isLoggedIn ? "inline-block" : "none";
+  };
+    </script>
+</head>
+    <body>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="homepage.html">Swapify</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="homepage.html"><i class="fas fa-home me-1"></i> Home</a></li>
+                        <li class="nav-item" id="login-link"><a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i> Login</a></li>
+                        <li class="nav-item" id="account-link"><a class="nav-link" href="/account"><i class="fas fa-user-circle me-1"></i> Account</a></li>
+                        <li class="nav-item" id="register-link"><a class="nav-link" href="register.html"><i class="fas fa-user-plus me-1"></i> Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="buygift"><i class="fas fa-shopping-cart me-1"></i> Buy Gift Cards</a></li>
+                        <li class="nav-item"><a class="nav-link" href="sellgift.html"><i class="fas fa-tag me-1"></i> Sell Gift Cards</a></li>
+                        <li class="nav-item" id="cart-link"><a class="nav-link" href="/cart"><i class="fas fa-shopping-cart me-1"></i> Cart</a> </li>
+                        <li class="nav-item" id="logout-link"><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt me-1"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Carousel -->
+        <!-- Carousel -->
+    <div id="carouselExample" style="margin-top: 80px;" class="carousel slide" data-bs-ride="carousel" data-bs-interval = "2000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="https://images.template.net/341573/Voucher-Template-edit-online.png" class="d-block w-100" alt="Slide 1">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2024/12/477354442/KP/YA/NK/79379188/flipkart-gift-voucher.jpg" class="d-block w-100" alt="Slide 2">
+                    </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="https://www.dealsshutter.com/uploads/giftcard/stores/bookmyshow-gift-cardspng-1568619034.png" class="d-block w-100" alt="Slide 3">
+                </div>
+                <div class="col-md-6">
+                    <img src="https://images.template.net/341573/Voucher-Template-edit-online.png" class="d-block w-100" alt="Slide 4">
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="https://pimwp.s3-accelerate.amazonaws.com/2023/08/PR_Raksha-Bandhan-Special.jpg" class="d-block w-100" alt="Slide 3">
+                </div>
+                <div class="col-md-6">
+                    <img src="https://blog.brandstik.com/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-14-at-19.30.53-1.jpeg" class="d-block w-100" alt="Slide 4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+    <!-- Slogan Section (Responsive with Bootstrap) -->
+    <div class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <p class="fs-4 fw-medium">Your Shopping, Your Way</p>
+                <p id="sloganBold" class="fw-bold fs-5 text-primary">Rediscover the Magic with SWAPIFY Gift Vouchers!</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Buttons Section -->
+    <div class="text-center my-4">
+        <button onclick="window.location.href='/buygift'" class="btn btn-primary btn-lg btn-custom" style="margin-bottom : 30px;">Buy Gift Card</button>
+        <button onclick="window.location.href='sellgift.html'" class="btn btn-success btn-lg btn-custom" style="margin-bottom : 30px;">Sell Gift Card</button>
+    </div>
+
+    <!-- <div class="steps">
+        <p id = "First">Got an unused Gift Card to sell?</p>
+        <p id = "Second">Sell it on <span style="color: red; font-weight: bold;">SWAPIFY</span> Marketplace, it's fast, easy and safe! Most gift cards will be sold in a few hours</p>
+        <p style="font-size: 25px;">HOW IT WORKS</p>
+        <div class="images">
+            <img src="icons8-access-64.png" alt="login">
+            <img src="icons8-sell-64.png" alt="sell">
+            <img src="icons8-money-80.png" alt="money">
+        </div>
+    </div> -->
+
+    <div class="steps container text-center">
+        <p id="First" class="fs-4 fw-bold">Got an unused Gift Card to sell?</p>
+        <p id="Second" class="fs-5">
+            Sell it on <span class="text-danger fw-bold">SWAPIFY</span> Marketplace, it's fast, easy, and safe!
+            Most gift cards will be sold in a few hours.
+        </p>
+        <p class="fs-3">HOW IT WORKS</p>
+
+        <div class="images d-flex justify-content-center flex-wrap gap-5">
+            <div class="image-item text-center">
+                <img src="images/icons8-access-64.png" id="login" alt="login" class="img-fluid">
+                <span id="signup" class="d-block mt-2">Sign Up & Login</span>
+            </div>
+            <div class="image-item text-center">
+                <img src="images/icons8-sell-64.png" id="sell" alt="sell" class="img-fluid">
+                <span id="buy" class="d-block mt-2">Buy & Sell Vouchers</span>
+            </div>
+            <div class="image-item text-center">
+                <img src="images/icons8-money-80.png" id="money" alt="money" class="img-fluid">
+                <span id="money1" class="d-block mt-2">Earn Money</span>
+            </div>
+        </div>
+    </div>
+    <div class="text-center my-4">
+        <button onclick="window.location.href = '/buygift'" class="btn btn-primary btn-lg btn-custom" style="margin-top : 10px;">View All Gift Cards</button>
+    </div>
+
+    <!-- <div class="faqs">
+        <h2>Frequently Asked Questions</h2>
+        <p>Q1.  Can I sell gift cards which I have purchased from Swapify?</p>
+        <p> Yes you can sell as well as buy gift cards from Swapify.</p>
+        <p>Q2. Can I get the best deals by Selling gift cards on Swapify?
+        </p>
+        <p>Definitely Swapify is the right place if want to get paid for your unwanted gift card as you can get opportunity to earn the highest cashback.</p>
+        <p>Q3. Why can I see different prices for the same gift cards?
+        </p>
+        <p>Each gift cards are listed by the individual seller so keeping looking for the best deals.</p>
+        <p>Do i need to pay any extra fees or hidden charges</p>
+        <p>No! Swapify is absoloutely free.</p>
+    </div> -->
+    <div class="container" style="margin-bottom: 25px;">
+        <div class="faqs mx-auto p-4 rounded" id="faqs">
+            <h2 class="fw-bold text-center mb-4">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <p class="fw-semibold text-primary">Q1. Can I sell gift cards that I purchased from Swapify?</p>
+                <p>Yes! You can sell as well as buy gift cards on Swapify.</p>
+            </div>
+            <div class="faq-item">
+                <p class="fw-semibold text-primary">Q2. Can I get the best deals by selling gift cards on Swapify?</p>
+                <p>Definitely! Swapify is the right place if you want to get paid for your unwanted gift cards, as you have the opportunity to earn the highest cashback.</p>
+            </div>
+            <div class="faq-item">
+                <p class="fw-semibold text-primary">Q3. Why do I see different prices for the same gift cards?</p>
+                <p>Each gift card is listed by an individual seller, so keep looking for the best deals.</p>
+            </div>
+            <div class="faq-item">
+                <p class="fw-semibold text-primary">Q4. Do I need to pay any extra fees or hidden charges?</p>
+                <p>No! Swapify is absolutely free.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="containerF">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="login.html"><i class="fas fa-sign-in-alt me-1"></i> Login</a></li>
+                        <li><a href="#faqs"><i class="fas fa-question-circle me-1"></i> FAQ'S</a></li>
+                        <li><a href="blog.html"><i class="fas fa-blog me-1"></i> Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="aboutus.html"><i class="fas fa-info-circle me-1"></i> About Us</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope me-1"></i> Contact Us</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-shield-alt me-1"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="tc.html"><i class="fas fa-file-contract me-1"></i> Terms & Conditions</a></li>
+                        <li><a href="buygift"><i class="fas fa-shopping-cart me-1"></i> Buy Gift Cards</a></li>
+                        <li><a href="sellgift.html"><i class="fas fa-tag me-1"></i> Sell Gift Cards</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/7038918383?text=Hello%20I'm%20interested%20in%20your%20gift%20cards" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+<!--    <script>-->
+<!--        window.onload = function () {-->
+<!--          const urlParams = new URLSearchParams(window.location.search);-->
+<!--          if (urlParams.get("logout") === "true") {-->
+<!--            alert("Logged out successfully!");-->
+<!--          }-->
+<!--        };-->
+<!--    </script>-->
+
+</body>
+</html>

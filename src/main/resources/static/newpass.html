@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swapify Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="icon" href="/images/s.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+<!--            overflow: hidden;-->
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .nav-link {
+        position: relative;
+        transition: 0.3s;
+        color: white;
+    }
+
+    .nav-link:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #0d6efd;
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s;
+    }
+
+    .nav-link:hover:after {
+        width: 100%;
+    }
+
+    .content-wrapper {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 80px 0 20px;
+    }
+
+    .container1 {
+        width: 450px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container1::before {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background: rgba(13, 110, 253, 0.1);
+        border-radius: 50%;
+        top: -75px;
+        right: -75px;
+        z-index: 0;
+    }
+
+    .container1::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: rgba(13, 110, 253, 0.05);
+        border-radius: 50%;
+        bottom: -50px;
+        left: -50px;
+        z-index: 0;
+    }
+
+    .form-label {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: #495057;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 12px 15px;
+        border: 1px solid #e0e0e0;
+        transition: all 0.3s;
+    }
+
+    .form-control:focus {
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+        border-color: #0d6efd;
+    }
+
+    .form-control::placeholder {
+        color: #adb5bd;
+        font-size: 0.9rem;
+    }
+
+    .input-group {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #6c757d;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+        background: linear-gradient(45deg, #0d6efd, #0099ff);
+        border: none;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+    }
+
+    #regi {
+        text-align: center;
+        margin-top: 20px;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    #regi a {
+        color: #0d6efd;
+        font-weight: 500;
+        text-decoration: none;
+        position: relative;
+    }
+
+    #regi a:hover {
+        text-decoration: none;
+    }
+
+    #regi a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: #0d6efd;
+        bottom: -2px;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s;
+    }
+
+    #regi a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    /* Login heading */
+    .login-heading {
+        position: relative;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .login-heading h3 {
+        font-weight: 600;
+        color: #333;
+        letter-spacing: 0.5px;
+    }
+
+    .login-heading::after {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 3px;
+        background: #0d6efd;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 10px;
+    }
+
+    /* Footer styles */
+    .footer {
+        background-color: #212529;
+        color: #fff;
+        padding: 20px 0;
+        margin-top: auto;
+    }
+
+    .containerF {
+        max-width: 1170px;
+        margin: auto;
+        padding: 0 15px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-col {
+        width: 30%;
+    }
+
+    .footer-col h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        position: relative;
+        color: #fff;
+    }
+
+    .footer-col h4::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        height: 2px;
+        width: 30px;
+        background: #0d6efd;
+    }
+
+    .footer-col ul li {
+        margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+        text-decoration: none;
+        color: #bbb;
+        font-size: 14px;
+        transition: 0.3s;
+        display: block;
+    }
+
+    .footer-col ul li a:hover {
+        color: #0d6efd;
+        transform: translateX(5px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .container1 {
+            width: 90%;
+            margin: 0 15px;
+        }
+
+        .footer-col {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    <script>
+        window.onload = function() {
+          // Check if cookie is set
+          const cookies = document.cookie.split("; ").reduce((acc, cookie) => {
+            const [name, value] = cookie.trim().split("=");
+            acc[name] = value;
+            return acc;
+          }, {});
+
+        const isLoggedIn = cookies["isLoggedIn"] === "true";
+
+    document.getElementById("login-link").style.display = isLoggedIn ? "none" : "inline-block";
+    document.getElementById("register-link").style.display = isLoggedIn ? "none" : "inline-block";
+    document.getElementById("account-link").style.display = isLoggedIn ? "inline-block" : "none";
+    document.getElementById("logout-link").style.display = isLoggedIn ? "inline-block" : "none";
+  };
+    </script>
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="homepage.html">
+      Swapify
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" id="register-link"><a class="nav-link" href="register.html"><i class="fas fa-user-plus me-1"></i> Register</a></li>
+        <li class="nav-item"><a class="nav-link" href="buygift"><i class="fas fa-shopping-cart me-1"></i> Buy Gift Cards</a></li>
+        <li class="nav-item"><a class="nav-link" href="sellgift.html"><i class="fas fa-tag me-1"></i> Sell Gift Cards</a></li>
+        <li class="nav-item"><a class="nav-link" href="homepage.html"><i class="fas fa-home me-1"></i> Home</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="content-wrapper">
+  <div class="container1">
+    <div class="login-heading">
+      <h3>Change Password</h3>
+    </div>
+    <form name="changeForm" action="/changepass" method="POST">
+      <div class="mb-3">
+        <label for="otp" class="form-label">Enter OTP</label>
+        <input type="text" id="otp" name="otp" class="form-control" placeholder="Enter The OTP" required>
+
+        <label for="newpass" class="form-label">Enter New Password</label>
+
+        <input type="password" id="newpass" name="pass" class="form-control" placeholder="Enter The New Password" required>
+
+        <label for="newpass" class="form-label">Confirm New Password</label>
+
+        <input type="password" id="conpass" name="conPass" class="form-control" placeholder="Confirm The New Password" required>
+        <!--                <div id="emailError" class="error-message">Please enter a valid email address</div>-->
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <i class="fas fa-sign-in-alt me-2"></i>Change Password
+      </button>
+    </form>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="containerF">
+    <div class="row">
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="login.html"><i class="fas fa-sign-in-alt me-1"></i> Login</a></li>
+          <li><a href="#faqs"><i class="fas fa-question-circle me-1"></i> FAQ'S</a></li>
+          <li><a href="blog.html"><i class="fas fa-blog me-1"></i> Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Help</h4>
+        <ul>
+          <li><a href="aboutus.html"><i class="fas fa-info-circle me-1"></i> About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope me-1"></i> Contact Us</a></li>
+          <li><a href="privacy.html"><i class="fas fa-shield-alt me-1"></i> Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="tc.html"><i class="fas fa-file-contract me-1"></i> Terms & Conditions</a></li>
+          <li><a href="buygift"><i class="fas fa-shopping-cart me-1"></i> Buy Gift Cards</a></li>
+          <li><a href="sellgift.html"><i class="fas fa-tag me-1"></i> Sell Gift Cards</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+
+</script>
+</body>
+</html>

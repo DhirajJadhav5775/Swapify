@@ -1,0 +1,775 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>My Account : Swapify</title>-->
+<!--    <link rel="icon" href="/images/s.png">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">-->
+
+<!--    <script>-->
+<!--        window.onload = function() {-->
+<!--          // Check if cookie is set-->
+<!--          const cookies = document.cookie.split("; ").reduce((acc, cookie) => {-->
+<!--            const [name, value] = cookie.trim().split("=");-->
+<!--            acc[name] = value;-->
+<!--            return acc;-->
+<!--          }, {});-->
+
+<!--        const isLoggedIn = cookies["isLoggedIn"] === "true";-->
+
+<!--    document.getElementById("login-link").style.display = isLoggedIn ? "none" : "inline-block";-->
+<!--    document.getElementById("register-link").style.display = isLoggedIn ? "none" : "inline-block";-->
+<!--    document.getElementById("account-link").style.display = isLoggedIn ? "inline-block" : "none";-->
+<!--    document.getElementById("logout-link").style.display = isLoggedIn ? "inline-block" : "none";-->
+<!--  };-->
+<!--    </script>-->
+
+<!--    <style>-->
+<!--        /* Custom styles */-->
+<!--        body {-->
+<!--            background-color: rgb(249, 248, 248);-->
+<!--            font-family: 'Poppins',sans-serif;-->
+<!--        }-->
+
+<!--        .profile-picture {-->
+<!--            position: relative;-->
+<!--            display: inline-block;-->
+<!--        }-->
+
+<!--        .profile-picture img {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            object-fit: cover;-->
+<!--            border: 3px solid #dc3545;-->
+<!--            padding: 3px;-->
+<!--        }-->
+
+<!--        .navbar {-->
+<!--            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+
+<!--        .navbar-brand {-->
+<!--            font-weight: bold;-->
+<!--            letter-spacing: 1px;-->
+<!--        }-->
+
+<!--        .nav-link {-->
+<!--            position: relative;-->
+<!--            transition: 0.3s;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .nav-link:after {-->
+<!--            content: '';-->
+<!--            position: absolute;-->
+<!--            width: 0;-->
+<!--            height: 2px;-->
+<!--            background: #0d6efd;-->
+<!--            bottom: 0;-->
+<!--            left: 0;-->
+<!--            transition: width 0.3s;-->
+<!--        }-->
+
+<!--        .nav-link:hover:after {-->
+<!--            width: 100%;-->
+<!--        }-->
+
+<!--        .list-group-item {-->
+<!--            border-left: none;-->
+<!--            border-right: none;-->
+<!--            padding: 12px 15px;-->
+<!--        }-->
+
+<!--        .list-group-item:first-child {-->
+<!--            border-top: none;-->
+<!--        }-->
+
+<!--        .list-group-item:last-child {-->
+<!--            border-bottom: none;-->
+<!--        }-->
+
+<!--        .text-warning {-->
+<!--            color: #ffc107 !important;-->
+<!--        }-->
+
+<!--        /* Add WhatsApp floating button */-->
+<!--        .whatsapp-float {-->
+<!--            position: fixed;-->
+<!--            bottom: 20px;-->
+<!--            right: 20px;-->
+<!--            background-color: #25d366;-->
+<!--            color: white;-->
+<!--            border-radius: 50%;-->
+<!--            width: 60px;-->
+<!--            height: 60px;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            font-size: 24px;-->
+<!--            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);-->
+<!--            z-index: 1000;-->
+<!--        }-->
+<!--        .containerF {-->
+<!--            max-width: 1170px;-->
+<!--            margin: auto;-->
+<!--        }-->
+
+<!--        .row {-->
+<!--            display: flex;-->
+<!--            flex-wrap: wrap;-->
+<!--            justify-content: space-between;-->
+<!--        }-->
+
+<!--        ul {-->
+<!--            list-style: none;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        .footer {-->
+<!--            background-color: #212529;-->
+<!--            color: #fff;-->
+<!--            padding: 20px 0;-->
+<!--            margin-top: 90px;-->
+<!--        }-->
+
+<!--        .containerF {-->
+<!--            max-width: 1170px;-->
+<!--            margin: auto;-->
+<!--            padding: 0 15px;-->
+<!--        }-->
+
+<!--        .row {-->
+<!--            display: flex;-->
+<!--            flex-wrap: wrap;-->
+<!--            justify-content: space-between;-->
+<!--        }-->
+
+<!--        .footer ul {-->
+<!--            list-style: none;-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .footer-col {-->
+<!--            width: 30%;-->
+<!--        }-->
+
+<!--        .footer-col h4 {-->
+<!--            font-size: 16px;-->
+<!--            font-weight: 600;-->
+<!--            margin-bottom: 15px;-->
+<!--            position: relative;-->
+<!--            color: #fff;-->
+<!--        }-->
+
+<!--        .footer-col h4::before {-->
+<!--            content: '';-->
+<!--            position: absolute;-->
+<!--            left: 0;-->
+<!--            bottom: -8px;-->
+<!--            height: 2px;-->
+<!--            width: 30px;-->
+<!--            background: #0d6efd;-->
+<!--        }-->
+
+<!--        .footer-col ul li {-->
+<!--            margin-bottom: 8px;-->
+<!--        }-->
+
+<!--        .footer-col ul li a {-->
+<!--            text-decoration: none;-->
+<!--            color: #bbb;-->
+<!--            font-size: 14px;-->
+<!--            transition: 0.3s;-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--        .footer-col ul li a:hover {-->
+<!--            color: #0d6efd;-->
+<!--            transform: translateX(5px);-->
+<!--        }-->
+
+<!--        /* Responsive adjustments */-->
+<!--        @media (max-width: 768px) {-->
+<!--            .container1 {-->
+<!--                width: 90%;-->
+<!--                margin: 0 15px;-->
+<!--            }-->
+
+<!--            .footer-col {-->
+<!--                width: 100%;-->
+<!--                margin-bottom: 20px;-->
+<!--            }-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash; Navigation Bar &ndash;&gt;-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--    <div class="container">-->
+<!--        <a class="navbar-brand" href="../static/homepage.html">Swapify</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">-->
+<!--            <ul class="navbar-nav ms-auto">-->
+<!--                <li class="nav-item" id="login-link"><a class="nav-link" href="/login.html"> <i class="fas fa-sign-in-alt me-1"></i> Login</a></li>-->
+<!--                <li class="nav-item" id="register-link"><a class="nav-link" href="/register.html"> <i class="fas fa-user-plus me-1"></i> Register</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="/homepage.html"> <i class="fas fa-home me-1"></i> Home</a></li>-->
+<!--                <li class="nav-item" id="account-link"><a class="nav-link" href="/account.html"> <i class="fas fa-user-circle me-1"></i> Account</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="buygift"> <i class="fas fa-shopping-cart me-1"></i> Buy Gift Cards</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="/sellgift.html"> <i class="fas fa-tag me-1"></i> Sell Gift Cards</a></li>-->
+<!--                <li class="nav-item" id="logout-link"><a class="nav-link" href="/logout"> <i class="fas fa-sign-out-alt me-1"></i> Logout</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--&lt;!&ndash; Main Content &ndash;&gt;-->
+<!--<div class="container mt-4">-->
+<!--    <div class="card mb-4">-->
+<!--        <div class="card-body">-->
+<!--            <h4 class="text-secondary">Profile & Settings</h4>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="row">-->
+<!--        &lt;!&ndash; Left sidebar &ndash;&gt;-->
+<!--        <div class="col-md-3">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body text-center">-->
+<!--&lt;!&ndash;                    <h5 class="mt-3">Dhiraj Jadhav</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h5 class="mt-3" th:text="${session.user.name}">Username</h5>&ndash;&gt;-->
+<!--                    <h5 class="mt-3" th:if="${session.user != null}" th:text="${session.user.firstname + ' ' + session.user.lastname}">Username</h5>-->
+<!--                    <h5 th:unless="${session.user != null}">Guest</h5>-->
+
+<!--                    &lt;!&ndash;                    <p><a href="#" class="text-warning">Click To Verify KYC</a></p>&ndash;&gt;-->
+
+<!--                    <div class="list-group mt-4">-->
+<!--&lt;!&ndash;                        <a href="accdetails.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Account Details&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fas fa-user-circle text-warning"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--                        <a href="orders.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">-->
+<!--                            Orders-->
+<!--                            <i class="fas fa-shopping-cart text-warning"></i>-->
+<!--                        </a>-->
+<!--                        <a href="/forgotpass.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">-->
+<!--                            Change Password-->
+<!--                            <i class="fas fa-lock text-warning"></i>-->
+<!--                        </a>-->
+<!--                        <a href="/logout" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">-->
+<!--                            Logout-->
+<!--                            <i class="fas fa-sign-out-alt text-warning"></i>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Right content area &ndash;&gt;-->
+<!--        <div class="col-md-9">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <div class="alert alert-info d-flex align-items-center">-->
+<!--                        <i class="fas fa-info-circle me-2"></i>-->
+<!--                        <span>NO ORDER HAS BEEN MADE YET.</span>-->
+<!--                        <a href="buygift.html" class="btn btn-warning ms-auto">BROWSE PRODUCTS</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="footer">-->
+<!--    <div class="containerF">-->
+<!--        <div class="row">-->
+<!--            <div class="footer-col">-->
+<!--                <h4>Quick Links</h4>-->
+<!--                <ul>-->
+<!--                    <li><a href="../static/login.html"><i class="fas fa-sign-in-alt me-1"></i> Login</a></li>-->
+<!--                    <li><a href="#faqs"><i class="fas fa-question-circle me-1"></i> FAQ'S</a></li>-->
+<!--                    <li><a href="../static/blog.html"><i class="fas fa-blog me-1"></i> Blog</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <div class="footer-col">-->
+<!--                <h4>Get Help</h4>-->
+<!--                <ul>-->
+<!--                    <li><a href="../static/aboutus.html"><i class="fas fa-info-circle me-1"></i> About Us</a></li>-->
+<!--                    <li><a href="../static/contact.html"><i class="fas fa-envelope me-1"></i> Contact Us</a></li>-->
+<!--                    <li><a href="../static/privacy.html"><i class="fas fa-shield-alt me-1"></i> Privacy Policy</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            <div class="footer-col">-->
+<!--                <h4>Support</h4>-->
+<!--                <ul>-->
+<!--                    <li><a href="../static/tc.html"><i class="fas fa-file-contract me-1"></i> Terms & Conditions</a></li>-->
+<!--                    <li><a href="buygift"><i class="fas fa-shopping-cart me-1"></i> Buy Gift Cards</a></li>-->
+<!--                    <li><a href="../static/sellgift.html"><i class="fas fa-tag me-1"></i> Sell Gift Cards</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
+<!--&lt;!&ndash; WhatsApp Float Button &ndash;&gt;-->
+<!--<a href="https://wa.me/7038918383?text=Hello%20I'm%20interested%20in%20your%20gift%20cards" class="whatsapp-float">-->
+<!--    <i class="fab fa-whatsapp"></i>-->
+<!--</a>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--&lt;!&ndash;                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Payout Details&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fas fa-money-bill-wave text-warning"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                            Stock Notifications&ndash;&gt;-->
+<!--&lt;!&ndash;                            <i class="fas fa-bell text-warning"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </a>&ndash;&gt;-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Swapify</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/s.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #0d6efd;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .cart-badge {
+            background-color: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            min-height: calc(100vh - 80px);
+            padding-top : 70px;
+        }
+
+        .page-title {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd93d, #ff9800);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-email {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .verify-btn {
+            background: linear-gradient(135deg, #6c5ce7, #5a4fcf);
+            border: none;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .verify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        /* Sidebar Menu */
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #6c757d;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: #f8f9fa;
+            color: #00d4aa;
+            transform: translateX(5px);
+        }
+
+        .sidebar-menu i {
+            margin-right: 0.75rem;
+            width: 20px;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .form-label {
+            color: #495057;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+        }
+
+        .form-control:focus {
+            border-color: #00d4aa;
+            box-shadow: 0 0 0 0.2rem rgba(0, 212, 170, 0.25);
+            background-color: white;
+        }
+
+        .save-btn {
+            background: #212529;
+            border: none;
+            color: white;
+            padding: 0.75rem 3rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 170, 0.3);
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-float:hover {
+            background: #20c958;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                margin-bottom: 2rem;
+            }
+
+            .main-content {
+                padding: 1rem 0;
+            }
+
+            .navbar-nav {
+                margin-top: 1rem;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header {
+                padding: 0.5rem 0;
+            }
+
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+
+            .form-section,
+            .sidebar {
+                padding: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="homepage.html">Swapify</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="homepage.html"><i class="fas fa-home me-1"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/cart"><i class="fas fa-shopping-cart me-1"></i> Cart</a> </li>
+                <li class="nav-item"><a class="nav-link" href="buygift"><i class="fas fa-shopping-cart me-1"></i> Buy Gift Cards</a></li>
+                <li class="nav-item"><a class="nav-link" href="sellgift.html"><i class="fas fa-tag me-1"></i> Sell Gift Cards</a></li>
+                <li class="nav-item" id="logout-link"><a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt me-1"></i> Logout</a></li>
+                <!-- <li class="nav-item"><a class="nav-link active" href="sellgift.html">Sell Gift Cards</a></li> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="container">
+        <h1 class="page-title">Profile & Settings</h1>
+
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-4 col-md-5">
+                <div class="sidebar">
+                    <div class="profile-section">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="profile-name" th:if="${session.user != null}" th:text="${session.user.firstname + ' ' + session.user.lastname}">Username</h3>
+<!--                        <h3 class="mt-3" th:if="${session.user != null}" th:text="${session.user.firstname + ' ' + session.user.lastname}">Username</h3>-->
+<!--                                            <h3 th:unless="${session.user != null}">Guest</h3>-->
+                                                <p class="profile-email" th:if="${session.user != null}" th:text="${session.user.email}">EmailID</p>
+                                            </div>
+
+                                            <ul class="sidebar-menu">
+                                                <li>
+                                                    <a href="account" class="active">
+                                                        <i class="fas fa-user-cog"></i>
+                                                        Account Details
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/myorders">
+                                                        <i class="fas fa-shopping-bag"></i>
+                                                        Orders
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/forgotpass.html">
+                                                        <i class="fas fa-lock"></i>
+                                                        Change Password
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/logout">
+                                                        <i class="fas fa-sign-out-alt"></i>
+                                                        Logout
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- Form Section -->
+            <div class="col-lg-8 col-md-7">
+                <div class="form-section">
+                    <h2 class="section-title">My Account</h2>
+
+                    <form name = "mobileForm" action="/addMobileNumber" method="POST" onsubmit="return validateNumber()">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+
+                                <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="firstName" th:value="${session.user != null ? session.user.firstname : ''}" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="lastName" th:value="${session.user != null ? session.user.lastname : ''}" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" th:value="${session.user != null ? session.user.email : ''}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="mobile" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" id="mobile" name="mobilenumber"
+                                   placeholder="Enter your mobile number" value="" required>
+                        </div>
+
+                        <button type="submit" class="save-btn">
+                            <i class="fas fa-save me-2"></i>SAVE CHANGES
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/7038918383?text=Hello%20I'm%20interested%20in%20your%20gift%20cards" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    function validateNumber()
+    {
+        var mobilenumber = document.forms["mobileForm"]["mobilenumber"].value;
+        if(mobilenumber == null)
+        {
+            alert('Enter Mobile Number');
+        }
+    }
+
+<!--    // Simple form validation and interaction-->
+<!--
+<!--    // Sidebar menu active state-->
+<!--    document.querySelectorAll('.sidebar-menu a').forEach(link => {-->
+<!--        link.addEventListener('click', function(e) {-->
+<!--            e.preventDefault();-->
+<!--            document.querySelectorAll('.sidebar-menu a').forEach(l => l.classList.remove('active'));-->
+<!--            this.classList.add('active');-->
+<!--        });-->
+<!--    });-->
+
+<!--    // WhatsApp button click handler-->
+<!--    document.querySelector('.whatsapp-float').addEventListener('click', function(e) {-->
+<!--        e.preventDefault();-->
+<!--        window.open('https://wa.me/1234567890', '_blank');-->
+<!--    });-->
+
+</script>
+</body>
+</html>
+
+<!--.filter-tabs {-->
+<!--flex-direction: row;-->
+<!--flex-wrap: wrap;-->
+<!--justify-content: center;-->
+<!--}-->

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - User Messages</title>
+    <link rel="icon" href="/images/s.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+            overflow-x:hidden;
+        }
+
+        .admin-header {
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .message-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .message-header {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 12px 12px 0 0;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .message-body {
+            padding: 1.5rem;
+        }
+
+        .message-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #495057;
+            margin-bottom: 1rem;
+        }
+
+        .message-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: #6c757d;
+            border-top: 1px solid #f1f3f4;
+            padding-top: 1rem;
+        }
+
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-new {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-read {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-replied {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .filter-tabs {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid #667eea;
+            background-color: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: #667eea;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #6c757d;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+
+        .search-box {
+            max-width: 400px;
+            margin: 100px auto 2rem auto; /* Push below navbar */
+        }
+
+        .priority-high {
+            border-left: 4px solid #dc3545;
+        }
+
+        .priority-medium {
+            border-left: 4px solid #ffc107;
+        }
+
+        .priority-low {
+            border-left: 4px solid #28a745;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: 0.3s;
+            color: white;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #0d6efd;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="homepage.html">Swapify</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/Admin/adminDashboard}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/Admin/users}"><i class="fas fa-users"></i> Manage Users</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/Admin/vouchers}"><i class="fas fa-ticket-alt"></i> Manage Vouchers</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/Admin/transactions}"><i class="fas fa-clipboard-list"></i> Orders</a></li>
+<!--                <a th:href="@{/Admin/messages}"><i class="fas fa-envelope"></i> Messages</a>-->
+                <li class="nav-item"><a class="nav-link" th:href="@{/Admin/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-2">
+    <!-- Search Box -->
+    <div class="search-box">
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search messages..." id="searchInput">
+        </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterMessages('all')">All Messages</button>
+        <button class="tab-btn" onclick="filterMessages('new')">New</button>
+        <button class="tab-btn" onclick="filterMessages('read')">Read</button>
+        <button class="tab-btn" onclick="filterMessages('replied')">Replied</button>
+    </div>
+
+    <!-- Messages Container -->
+    <div class="d-flex justify-content-center">
+        <div class="row justify-content-center" id="messagesContainer" style="max-width: 900px; width: 100%;">
+            <!-- Check if messages exist -->
+            <div th:if="${messages != null and !messages.isEmpty()}">
+                <!-- Loop through messages -->
+                <div class="col-12 message-item"
+                     th:each="message : ${messages}"
+                     th:attr="data-status=${message.status ?: 'new'}, data-priority=${message.priority ?: 'medium'}">
+
+                    <div class="message-card"
+                         th:classappend="${message.priority == 'high'} ? 'priority-high' : (${message.priority == 'low'} ? 'priority-low' : 'priority-medium')">
+
+                        <!-- Message Header -->
+                        <div class="message-header">
+                            <div class="d-flex align-items-center">
+                                <div class="user-avatar me-3">
+                                    <span th:text="${message.subject}">Subject</span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1 fw-bold" th:text="${message.name}">
+                                        Username
+                                    </h6>
+                                    <small class="text-muted" th:text="${message.email}">
+                                        user@example.com
+                                    </small>
+                                </div>
+                                <span class="status-badge"
+                                      th:classappend="${message.status == 'new'} ? 'status-new' : (${message.status == 'replied'} ? 'status-replied' : 'status-read')"
+                                      th:text="${message.status ?: 'new'}">
+                                        New
+                                    </span>
+                            </div>
+                        </div>
+
+                        <!-- Message Body -->
+                        <div class="message-body">
+                            <!-- Subject (if available) -->
+                            <h6 class="fw-bold mb-2" th:if="${message.subject}" th:text="${message.subject}">
+                                Message Subject
+                            </h6>
+
+                            <!-- Message Content -->
+                            <div class="message-text" th:text="${message.message}">
+                                This is the message content that the user has sent through the contact form.
+                                It can be multiple lines and should be displayed clearly.
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="action-buttons">
+                                <span th:text="${#temporals.format(message.createdAt, 'MMM dd, yyyy HH:mm')}"></span>
+                            </div>
+<!--                            <div th:if="${message.priority}">-->
+<!--                                <i class="fas fa-flag me-1"></i>-->
+<!--                                <span th:text="${#strings.capitalize(message.priority)}">Medium</span>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div th:if="${messages == null or messages.isEmpty()}" class="col-12">
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <h4>No Messages Found</h4>
+                    <p>There are no user messages to display at the moment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    function filterMessages(status) {
+        const messages = document.querySelectorAll('.message-item');
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        event.target.classList.add('active');
+        messages.forEach(message => {
+            if (status === 'all' || message.dataset.status === status) {
+                message.style.display = 'block';
+            } else {
+                message.style.display = 'none';
+            }
+        });
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const messages = document.querySelectorAll('.message-item');
+        messages.forEach(message => {
+            const messageText = message.textContent.toLowerCase();
+            if (messageText.includes(searchTerm)) {
+                message.style.display = 'block';
+            } else {
+                message.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+</html>

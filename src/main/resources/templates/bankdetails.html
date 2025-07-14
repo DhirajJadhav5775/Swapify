@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Details Form</title>
+    <link rel="icon" href="/images/s.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+            padding-top: 90px;
+            padding-bottom: 50px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+
+        h2 {
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #fff !important;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: 0.3s;
+            color: white !important;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #0d6efd;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .btn-dark-gray {
+            background-color: #343a40;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+        }
+
+        .btn-dark-gray:hover {
+            background-color: #23272b;
+        }
+
+        .footer {
+            background-color: #212529;
+            color: #fff;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        .containerF {
+            max-width: 1170px;
+            margin: auto;
+            padding: 0 15px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col {
+            width: 30%;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            color: #fff;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            height: 2px;
+            width: 30px;
+            background: #dc3545;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #bbb;
+            font-size: 14px;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .footer-col ul li a:hover {
+            color: #0d6efd;
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .footer-col {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="homepage.html">Swapify</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+                <li class="nav-item" id="login-link"><a class="nav-link" href="login.html">Login</a></li>
+                <li class="nav-item" id="account-link"><a class="nav-link" href="/account">Account</a></li>
+                <li class="nav-item" id="register-link"><a class="nav-link" href="register.html">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="buygift">Buy Gift Cards</a></li>
+                <li class="nav-item" id="cart-link"><a class="nav-link" href="/cart">Cart</a></li>
+                <li class="nav-item" id="logout-link"><a class="nav-link" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center">Add Bank Details</h2>
+        <form th:action="@{/saveBankDetails}" method="post">
+            <div class="form-group">
+                <label for="upi">UPI ID</label>
+                <input type="text" class="form-control" id="upi" name="upiId" placeholder="Enter your UPI ID" required>
+            </div>
+
+            <div class="form-group">
+                <label for="accountNumber">Account Number</label>
+                <input type="text" class="form-control" id="accountNumber" name="accountNumber" placeholder="Enter your Account Number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmAccountNumber">Confirm Account Number</label>
+                <input type="text" class="form-control" id="confirmAccountNumber" name="confirmAccountNumber" placeholder="Re-enter Account Number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bankName">Bank Name</label>
+                <input type="text" class="form-control" id="bankName" name="bankName" placeholder="Enter Bank Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ifsc">IFSC Code</label>
+                <input type="text" class="form-control" id="ifsc" name="ifscCode" placeholder="Enter IFSC Code" required>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-dark-gray">Save Bank Details</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="containerF">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="#faqs">FAQ's</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get Help</h4>
+                <ul>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="../static/contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="tc.html">Terms & Conditions</a></li>
+                    <li><a href="buygift">Buy Gift Cards</a></li>
+                    <li><a href="sellgift.html">Sell Gift Cards</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
