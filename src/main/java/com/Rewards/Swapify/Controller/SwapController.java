@@ -423,9 +423,7 @@ public class SwapController
     public String adminLogin(@RequestParam String username, @RequestParam String password, HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        String adminEmail = "admin7979@gmail.com";
-        String adminPassword = "DhirajAdmin@7979";
-        String adminName = "Dhiraj";
+        
 
         if(username.equals(adminEmail) && password.equals(adminPassword))
         {
